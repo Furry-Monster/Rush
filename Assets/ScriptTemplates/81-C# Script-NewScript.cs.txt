@@ -1,0 +1,8 @@
+using UnityEngine;
+
+namespace Rush
+{
+    public class #SCRIPTNAME# : MonoBehaviour
+    {
+    }
+}

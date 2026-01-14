@@ -18,6 +18,9 @@ namespace Rush.GamePlay.GameInput
             sandbox.SetInput(playerInput);
         }
 
+        /// <summary>
+        /// Get movement axis based on camera orientation and input axes.
+        /// </summary>
         private static Vector2 GetMoveAxis()
         {
             var horizontal = Input.GetAxis("Horizontal");
@@ -32,6 +35,9 @@ namespace Rush.GamePlay.GameInput
             return forwardVec2 + rightVec2;
         }
 
+        /// <summary>
+        /// Get world position from raycast based on mouse position.
+        /// </summary>
         private static Vector3 GetRaycastPos()
         {
             var mainCamera = Camera.main!;

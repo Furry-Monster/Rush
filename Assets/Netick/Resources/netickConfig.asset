@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefabs:
   - {fileID: 6016593775671591276, guid: 7e08957bdac74b5ebaf62240a02ce5f1, type: 3}
+  - {fileID: 4775238092919475100, guid: 3ac2d74055b184e4d9cdd264ff6ad700, type: 3}
   AutoGetPrefabs: 1
   PrefabsPath: Assets/
   TickRate: 30

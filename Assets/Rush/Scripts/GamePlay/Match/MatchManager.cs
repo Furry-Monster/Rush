@@ -1,5 +1,6 @@
 using Netick;
 using Netick.Unity;
+using Rush.GamePlay.Character.Player;
 using Rush.GamePlay.Manager;
 using UnityEngine;
 using NetworkPlayer = Netick.NetworkPlayer;
@@ -32,7 +33,13 @@ namespace Rush.GamePlay.Match
 
         private void SpawnPlayerSession(NetworkPlayer player)
         {
-            Sandbox.NetworkInstantiate(_playerSessionPrefab.gameObject, Vector3.zero, Quaternion.identity, player);
+            var no = Sandbox.NetworkInstantiate(_playerSessionPrefab.gameObject, Vector3.zero, Quaternion.identity,
+                player);
+
+            if (no.TryGetComponent(out PlayerSession playerSession))
+            {
+                playerSession.SetNickName($"Player_{player.PlayerId}");
+            }
         }
     }
 }

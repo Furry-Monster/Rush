@@ -13,7 +13,7 @@ namespace Rush.UI.Game.GUI
             _buttonRespawn.onClick.AddListener(OnButtonRespawn);
         }
 
-        private void OnButtonRespawn()
+        private static void OnButtonRespawn()
         {
             var localPlayerManager = FindObjectOfType<LocalPlayerManager>();
             localPlayerManager?.PlayerSession.RPCSpawn();

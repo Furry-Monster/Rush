@@ -7,7 +7,14 @@ namespace Rush.GamePlay.Character.Player
 {
     public class PlayerSession : NetworkBehaviour
     {
+        [Networked] public NetworkString16 NickName { get; set; }
+
         private int _inputSourcePlayerId;
+
+        public void SetNickName(string nickName)
+        {
+            NickName = new NetworkString16(nickName);
+        }
 
         public override void NetworkStart()
         {

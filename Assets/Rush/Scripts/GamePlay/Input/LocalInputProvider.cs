@@ -1,5 +1,3 @@
-using System;
-using Netick;
 using Netick.Unity;
 using UnityEngine;
 

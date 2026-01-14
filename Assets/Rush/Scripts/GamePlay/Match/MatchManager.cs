@@ -1,5 +1,6 @@
 using Netick;
 using Netick.Unity;
+using Rush.GamePlay.Manager;
 using UnityEngine;
 using NetworkPlayer = Netick.NetworkPlayer;
 
@@ -12,6 +13,9 @@ namespace Rush.GamePlay.Match
 
         public override void OnSceneLoaded(NetworkSandbox sandbox)
         {
+            var playerManager = FindObjectOfType<PlayerManager>();
+            playerManager.CachePlayers();
+
             if (sandbox.IsHost)
                 SpawnPlayerSession(sandbox.LocalPlayer);
         }

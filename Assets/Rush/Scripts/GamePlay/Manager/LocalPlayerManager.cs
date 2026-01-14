@@ -2,7 +2,7 @@
 using Rush.GamePlay.Character.Player;
 using UnityEngine;
 
-namespace Rush.GamePlay.Manager.LocalPlayer
+namespace Rush.GamePlay.Manager
 {
     public class LocalPlayerManager : MonoBehaviour
     {

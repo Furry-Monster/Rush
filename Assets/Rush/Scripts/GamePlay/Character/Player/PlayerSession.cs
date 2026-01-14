@@ -1,7 +1,6 @@
 using Netick;
 using Netick.Unity;
-using Rush.GamePlay.Manager.LocalPlayer;
-using Rush.GamePlay.Manager.Player;
+using Rush.GamePlay.Manager;
 using Rush.GamePlay.Match;
 
 namespace Rush.GamePlay.Character.Player

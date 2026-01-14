@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using Rush.GamePlay.Character.Player;
 using UnityEngine;
 
-namespace Rush.GamePlay.Manager.Player
+namespace Rush.GamePlay.Manager
 {
     public class PlayerManager : MonoBehaviour
     {
@@ -29,6 +29,20 @@ namespace Rush.GamePlay.Manager.Player
             return _playerCharacters[inputSourcePlayerId];
         }
 
+        public void CachePlayers()
+        {
+            var playerSessions = FindObjectsOfType<PlayerSession>();
+            foreach (var playerSession in playerSessions)
+            {
+                _playerSessions.Add(playerSession.InputSourcePlayerId, playerSession);
+            }
+        }
+
+        public bool IsPlayerSessionExist(int inputSourcePlayerId)
+        {
+            return _playerSessions.ContainsKey(inputSourcePlayerId);
+        }
+
         public void RegisterPlayerCharacter(PlayerCharacter playerCharacter)
         {
             _playerCharacters.Add(playerCharacter.InputSourcePlayerId, playerCharacter);
@@ -36,6 +50,8 @@ namespace Rush.GamePlay.Manager.Player
 
         public void RegisterPlayerSession(PlayerSession playerSession)
         {
+            if (IsPlayerSessionExist(playerSession.InputSourcePlayerId)) return;
+
             _playerSessions.Add(playerSession.InputSourcePlayerId, playerSession);
         }
 

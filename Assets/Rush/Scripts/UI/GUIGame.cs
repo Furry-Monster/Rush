@@ -1,5 +1,4 @@
-using System;
-using Rush.GamePlay.Manager.LocalPlayer;
+using Rush.GamePlay.Manager;
 using UnityEngine;
 using UnityEngine.UI;
 

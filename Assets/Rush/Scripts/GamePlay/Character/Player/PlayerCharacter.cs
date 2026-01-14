@@ -1,5 +1,5 @@
 ﻿using Netick.Unity;
-using Rush.GamePlay.Manager.Player;
+using Rush.GamePlay.Manager;
 using UnityEngine;
 
 namespace Rush.GamePlay.Character.Player

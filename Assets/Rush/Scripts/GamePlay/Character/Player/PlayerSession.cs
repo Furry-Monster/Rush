@@ -1,14 +1,22 @@
 using Netick;
 using Netick.Unity;
 using Rush.GamePlay.Manager.LocalPlayer;
+using Rush.GamePlay.Manager.Player;
 using Rush.GamePlay.Match;
 
 namespace Rush.GamePlay.Character.Player
 {
     public class PlayerSession : NetworkBehaviour
     {
+        private int _inputSourcePlayerId;
+
         public override void NetworkStart()
         {
+            _inputSourcePlayerId = InputSourcePlayerId;
+
+            var playerManager = FindObjectOfType<PlayerManager>();
+            playerManager.RegisterPlayerSession(this);
+
             if (IsInputSource)
             {
                 var localPlayerManager = FindObjectOfType<LocalPlayerManager>();
@@ -16,11 +24,17 @@ namespace Rush.GamePlay.Character.Player
             }
         }
 
+        public override void NetworkDestroy()
+        {
+            var playerManager = FindObjectOfType<PlayerManager>();
+            playerManager.RemovePlayerSession(_inputSourcePlayerId);
+        }
+
         [Rpc(RpcPeers.InputSource, RpcPeers.Owner, true)]
         public void RPCSpawn()
         {
             var matchManager = FindObjectOfType<MatchManager>();
-            matchManager.SpawnPlayerCharacter(Sandbox.LocalPlayer);
+            matchManager.SpawnPlayerCharacter(InputSource);
         }
     }
 }
